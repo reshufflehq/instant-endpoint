@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Instant API Endpoint</title>
+  <style type="text/css">
+    html {
+      font-family: sans-serif;
+      font-size: 125%;
+      margin: 50px;
+    }
+    blockquote {
+      background: #111;
+      border-radius: 0.25em;
+      color: #fff;
+      display: inline-block;
+      font-family: monospace;
+      font-size: 125%;
+      margin: 0;
+      padding:0.5em 1em;
+    }
+    button {
+    }
+  </style>
+</head>
+<body>
+  <h1>Instant API Endpoint</h1>
+  <p>Test your endpoint now with:</p>
+  <blockquote id="cmd">curl -X POST <span id="url"></span>api</blockquote>
+  <button onclick="copy()">Copy</button>
+  <script type="text/javascript">
+    const url = window.location.href;
+    document.getElementById('url').innerHTML = url;
+    function copy() {
+      const text = document.getElementById('cmd').textContent;
+      const e = document.createElement('input');
+      e.value = text;
+      document.body.appendChild(e);
+      e.select();
+      document.execCommand('copy');
+      document.body.removeChild(e);
+    }
+  </script>
+</body>
