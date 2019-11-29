@@ -7,6 +7,10 @@
       font-size: 125%;
       margin: 50px;
     }
+    div {
+      display: inline-block;
+      width: 70px;
+    }
     blockquote {
       background: #111;
       border-radius: 0.25em;
@@ -14,23 +18,22 @@
       display: inline-block;
       font-family: monospace;
       font-size: 125%;
-      margin: 0;
+      margin: 0 1em 0 0;
       padding:0.5em 1em;
-    }
-    button {
     }
   </style>
 </head>
 <body>
   <h1>Instant API Endpoint</h1>
   <p>Test your endpoint now with:</p>
-  <blockquote id="cmd">curl -X POST <span id="url"></span>api</blockquote>
-  <button onclick="copy()">Copy</button>
+  <p><div>GET:</div><blockquote id="get">curl <span class="url"></span>api</blockquote><button onclick="copy('get')">Copy</button></p>
+  <p><div>POST:</div><blockquote id="post">curl -X POST <span class="url"></span>api</blockquote><button onclick="copy('post')">Copy</button></p>
   <script type="text/javascript">
     const url = window.location.href;
-    document.getElementById('url').innerHTML = url;
-    function copy() {
-      const text = document.getElementById('cmd').textContent;
+    const es = document.getElementsByClassName('url');
+    Array.prototype.map.call(es, e => e.innerHTML = url);
+    function copy(id) {
+      const text = document.getElementById(id).textContent;
       const e = document.createElement('input');
       e.value = text;
       document.body.appendChild(e);
